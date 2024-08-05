@@ -1,0 +1,71 @@
+.container {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    max-width: 600px; /* Keeping the original width */
+    margin: 40px auto; /* Increased margin for more whitespace */
+    padding: 40px; /* Increased padding */
+    color: #2c3e50;
+    background-color: #f9f9f9; /* Light background for the container */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* Subtle shadow for depth */
+    border-radius: 8px; /* Softened corners */
+}
+
+.container h1 {
+    color: #333; /* Darker color for better readability */
+    margin-bottom: 20px; /* Space below the header */
+}
+
+.grid {
+    display: inline-grid;
+    grid-template-columns: repeat(5, 60px);
+    gap: 2px;
+    background-color: #e0e0e0;
+    padding: 2px;
+    border-radius: 4px;
+}
+
+.cell {
+    width: 60px;
+    height: 60px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd; /* Adding a subtle border to each cell */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* Soft shadow for each cell */
+}
+
+.robot {
+    font-size: 40px;
+    transition: transform 0.3s;
+}
+
+.north { transform: rotate(0deg); }
+.east { transform: rotate(90deg); }
+.south { transform: rotate(180deg); }
+.west { transform: rotate(270deg); }
+
+.controls {
+    margin-top: 30px; /* More space above controls */
+}
+
+.controls button {
+    background-color: #555; /* Darker, neutral color */
+    color: white;
+    border: none;
+    padding: 10px 20px; /* More padding for a better touch area */
+    margin: 5px;
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s; /* Smooth color and slight transform effect on hover */
+}
+
+.controls button:hover {
+    background-color: #666; /* Slightly darker on hover */
+    transform: translateY(-2px); /* Subtle lift effect */
+}
+
+.status {
+    margin-top: 20px;
+    font-style: italic;
+    color: #555; /* Subdued text color */
+}
