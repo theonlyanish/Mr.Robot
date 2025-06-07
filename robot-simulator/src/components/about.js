@@ -7,7 +7,7 @@ const About = () => {
     fontWeight: 400,
     letterSpacing: '.025em',
     WebkitFontSmoothing: 'antialiased'
-  };
+  };      
 
   return (
     <main style={{ margin: '40px auto', fontSize: '18px', lineHeight: '1.6', maxWidth: '800px' }}>
