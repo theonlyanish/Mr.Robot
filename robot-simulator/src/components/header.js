@@ -2,42 +2,54 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { useState } from 'react';
 import { useDarkMode } from './DarkModeContext';
 
 const Header = () => {
   const { isDarkMode, toggleDarkMode } = useDarkMode();
+  const [hoveredItem, setHoveredItem] = useState(null);
+
+  const baseFont = 'GTUltra, Lato, Noto Sans, Noto Sans JP, Noto Sans KR, Noto Sans SC, Noto Sans TC, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji"';
 
   const headerStyle = {
     backgroundColor: isDarkMode ? '#1a1a1a' : '#ffffff',
     padding: '20px 50px',
-    fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
+    fontFamily: baseFont,
     borderBottom: isDarkMode ? '1px solid #333' : '1px solid #eee'
   };
 
-  const linkStyle = {
+  const navItemStyle = {
     color: isDarkMode ? '#fff' : '#333',
-    fontSize: '18px',
+    fontSize: '16px',
+    fontFamily: baseFont,
+    fontWeight: 400,
     textDecoration: 'none',
-    marginLeft: '20px'
+    marginLeft: '24px',
+    padding: '16px 12px',
+    borderRadius: '6px',
+    transition: 'all 0.3s ease',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '6px'
   };
 
   const logoLinkStyle = {
     textDecoration: 'none',
     color: isDarkMode ? '#fff' : '#333',
     fontSize: '24px',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontFamily: baseFont
   };
 
-  const toggleStyle = {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '10px',
-    cursor: 'pointer',
-    padding: '8px 12px',
-    borderRadius: '20px',
-    backgroundColor: isDarkMode ? '#333' : '#f0f0f0',
+  const getNavItemStyle = (itemName) => ({
+    ...navItemStyle,
+    backgroundColor: hoveredItem === itemName ? (isDarkMode ? '#333' : '#f5f5f5') : 'transparent'
+  });
+
+  const toggleButtonStyle = {
+    ...getNavItemStyle('toggle'),
     border: 'none',
-    transition: 'all 0.3s ease'
+    cursor: 'pointer'
   };
 
   return (
@@ -49,19 +61,56 @@ const Header = () => {
         justifyContent: 'space-between', 
         alignItems: 'center' 
       }}>
-        <Link href="/" style={logoLinkStyle}>
-          <Image src="/bellroy.png" alt="Bellroy" width={100} height={40} />
-        </Link>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0px' }}>
+          <Link href="/" style={logoLinkStyle}>
+            <Image 
+              src="/robot.svg" 
+              alt="RoboGrid" 
+              width={85} 
+              height={45}
+              style={{
+                filter: isDarkMode ? 'brightness(0) invert(1)' : 'none'
+              }}
+            />
+          </Link>
+          <Link href="/" style={{ 
+            fontSize: '24px', 
+            fontWeight: 'bold', 
+            color: isDarkMode ? '#fff' : '#333',
+            fontFamily: baseFont,
+            textDecoration: 'none'
+          }}>
+            RoboGrid
+          </Link>
+        </div>
         <nav style={{ display: 'flex', alignItems: 'center' }}>
-          <button onClick={toggleDarkMode} style={toggleStyle}>
+          <button 
+            onClick={toggleDarkMode} 
+            style={toggleButtonStyle}
+            onMouseEnter={() => setHoveredItem('toggle')}
+            onMouseLeave={() => setHoveredItem(null)}
+          >
             <span style={{ fontSize: '16px' }}>
               {isDarkMode ? '☀️' : '🌙'}
             </span>
-            <span style={{ color: isDarkMode ? '#fff' : '#333', fontSize: '14px' }}>
+            <span>
               {isDarkMode ? 'Light' : 'Dark'}
             </span>
           </button>
-          <Link href="/about" style={linkStyle}>
+          <Link 
+            href="/rules" 
+            style={getNavItemStyle('rules')}
+            onMouseEnter={() => setHoveredItem('rules')}
+            onMouseLeave={() => setHoveredItem(null)}
+          >
+            Game Rules
+          </Link>
+          <Link 
+            href="/about" 
+            style={getNavItemStyle('about')}
+            onMouseEnter={() => setHoveredItem('about')}
+            onMouseLeave={() => setHoveredItem(null)}
+          >
             About Me
           </Link>
         </nav>
