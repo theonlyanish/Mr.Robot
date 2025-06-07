@@ -110,7 +110,7 @@ const GameRules = () => {
           <span style={robotEmoji}>💎</span>Diagonal Robot
         </h3>
         <p style={paragraphStyle}>
-          The most versatile navigator. Unlike other robots limited to four directions, this gem can move diagonally, giving you eight possible directions. It's perfect for finding creative paths around complex obstacle layouts.
+          The most versatile navigator. Unlike other robots limited to four directions, this gem can move diagonally, giving you eight possible directions. It&apos;s perfect for finding creative paths around complex obstacle layouts.
         </p>
 
         <h3 style={subHeadingStyle}>
@@ -145,7 +145,7 @@ const GameRules = () => {
 
         <h3 style={subHeadingStyle}>Command Programming</h3>
         <p style={paragraphStyle}>
-          The most powerful feature! Type a sequence of commands separated by commas to program your robot's entire journey. It's like writing a simple program:
+          The most powerful feature! Type a sequence of commands separated by commas to program your robot&apos;s entire journey. It&apos;s like writing a simple program:
         </p>
         <ul style={listStyle}>
           <li><code style={codeStyle}>MOVE, RIGHT, MOVE, LEFT, MOVE</code> – A basic navigation sequence</li>
@@ -171,7 +171,7 @@ const GameRules = () => {
         <h2 style={headingStyle}>Pro Tips</h2>
         <ul style={listStyle}>
           <li>Study the grid layout before making your first move – planning saves time</li>
-          <li>Use command programming for complex maneuvers – it's faster than individual button clicks</li>
+          <li>Use command programming for complex maneuvers – it&apos;s faster than individual button clicks</li>
           <li>Diagonal robots can often find shorter paths by cutting corners</li>
           <li>Fast robots are great for open areas but need extra caution near obstacles</li>
           <li>Energy robots reward careful planning – map out your entire route including recharge stops</li>
