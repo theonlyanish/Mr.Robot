@@ -199,9 +199,9 @@ export default function Home() {
         ))}
       </div>
       <div className={styles.controls}>
-        <button onClick={moveForward}>Move Forward</button>
-        <button onClick={() => rotate(true)}>Rotate Clockwise</button>
-        <button onClick={() => rotate(false)}>Rotate Counter-Clockwise</button>
+        <button onClick={(e) => { e.stopPropagation(); moveForward(); }}>Move Forward</button>
+        <button onClick={(e) => { e.stopPropagation(); rotate(true); }}>Rotate Clockwise</button>
+        <button onClick={(e) => { e.stopPropagation(); rotate(false); }}>Rotate Counter-Clockwise</button>
       </div>
       <div className={styles.commandQueue}>
         <input
@@ -210,8 +210,9 @@ export default function Home() {
           onChange={(e) => setCommandQueue(e.target.value)}
           placeholder="Enter commands (e.g., MOVE, LEFT, MOVE, RIGHT)"
           className={styles.commandInput}
+          onClick={(e) => e.stopPropagation()}
         />
-        <button className={styles.executeButton} onClick={executeCommands}>Execute Commands</button>
+        <button className={styles.executeButton} onClick={(e) => { e.stopPropagation(); executeCommands(); }}>Execute Commands</button>
       </div>
       <div className={styles.status}>
         Position: ({position.x}, {position.y}) | Direction: {DIRECTIONS[direction]}
