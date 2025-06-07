@@ -175,7 +175,7 @@ const GameRules = () => {
           <li>Diagonal robots can often find shorter paths by cutting corners</li>
           <li>Fast robots are great for open areas but need extra caution near obstacles</li>
           <li>Energy robots reward careful planning – map out your entire route including recharge stops</li>
-          <li>Don't forget you can switch robot types anytime to tackle different challenges</li>
+          <li>Don&apos;t forget you can switch robot types anytime to tackle different challenges</li>
         </ul>
       </div>
 
