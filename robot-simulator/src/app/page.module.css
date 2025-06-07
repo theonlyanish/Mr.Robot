@@ -190,3 +190,76 @@
     color: #FFA500;
     font-weight: bold;
 }
+
+.robotSelector {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.robotSelect {
+    padding: 8px 12px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.container.dark .robotSelect {
+    background-color: #3a3a3a;
+    border-color: #555;
+    color: #e0e0e0;
+}
+
+.robotSelect:focus {
+    outline: none;
+    border-color: #FFA500;
+}
+
+.robotDescription {
+    font-size: 12px;
+    color: #666;
+    font-style: italic;
+}
+
+.container.dark .robotDescription {
+    color: #aaa;
+}
+
+.controls button:disabled, .executeButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    color: #999;
+    border-color: #999;
+}
+
+.controls button:disabled:hover, .executeButton:disabled:hover {
+    transform: none;
+    color: #999;
+    border-color: #999;
+}
+
+.rechargeButton {
+    background-color: #2ecc71 !important;
+    color: white !important;
+    border-color: #2ecc71 !important;
+}
+
+.rechargeButton:hover {
+    background-color: #27ae60 !important;
+    border-color: #27ae60 !important;
+}
+
+.energy {
+    color: #3498db;
+    font-weight: bold;
+}
+
+.container.dark .energy {
+    color: #5dade2;
+}
