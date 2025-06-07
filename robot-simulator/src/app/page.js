@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styles from './page.module.css';
 import Header from '../components/header';
 import About from '../components/about';
@@ -25,6 +25,7 @@ const generateNewPosition = (currentObstacles, robotPos) => {
 
 export default function Home() {
   const { isDarkMode } = useDarkMode();
+  const containerRef = useRef(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [direction, setDirection] = useState(0);
   const [commandQueue, setCommandQueue] = useState('');
@@ -33,6 +34,39 @@ export default function Home() {
     { x: 4, y: 4, type: 'goal' },
   ]);
   const [goalCollected, setGoalCollected] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      // Only handle keyboard events if the container is focused
+      if (document.activeElement !== containerRef.current) return;
+
+      event.preventDefault();
+      
+      switch (event.key.toLowerCase()) {
+        case 'arrowup':
+        case 'w':
+          moveForward();
+          break;
+        case 'arrowleft':
+        case 'a':
+          rotate(false); // Turn left
+          break;
+        case 'arrowright':
+        case 'd':
+          rotate(true); // Turn right
+          break;
+        case 'arrowdown':
+        case 's':
+          // Turn around (180 degrees)
+          rotate(true);
+          setTimeout(() => rotate(true), 100);
+          break;
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [direction, obstacles]); // Include dependencies for the functions used
 
   const moveForward = () => {
     setPosition(prev => {
@@ -76,7 +110,7 @@ export default function Home() {
   const executeCommands = () => {
     const commands = commandQueue.toUpperCase().split(',').map(cmd => cmd.trim());
     let index = 0;
-    let currentDirection = direction;
+    let currentDirection = direction; // Track direction locally
 
     const executeNextCommand = () => {
       if (index >= commands.length) {
@@ -87,6 +121,7 @@ export default function Home() {
       const command = commands[index];
       switch (command) {
         case 'MOVE': 
+          // Use current direction for movement calculation
           setPosition(prev => {
             let newPos = { ...prev };
             switch (DIRECTIONS[currentDirection]) {
@@ -138,7 +173,12 @@ export default function Home() {
   };
 
   return (
-    <div className={`${styles.container} ${isDarkMode ? styles.dark : ''}`}>
+    <div 
+      ref={containerRef}
+      className={`${styles.container} ${isDarkMode ? styles.dark : ''}`}
+      tabIndex={0}
+      onClick={() => containerRef.current?.focus()}
+    >
       <h1>Robot Control Simulator</h1>
       <div className={styles.grid}>
         {[...Array(GRID_SIZE)].map((_, y) => (
@@ -176,6 +216,9 @@ export default function Home() {
       <div className={styles.status}>
         Position: ({position.x}, {position.y}) | Direction: {DIRECTIONS[direction]}
         {goalCollected && <span className={styles.success}> | Goal collected! 🎉</span>}
+      </div>
+      <div className={styles.keyboardHint}>
+        Click here and use Arrow Keys or WASD to control the robot
       </div>
     </div>
   );
