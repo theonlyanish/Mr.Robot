@@ -28,7 +28,7 @@ const ROBOT_TYPES = {
   },
   DIAGONAL: {
     name: 'Diagonal Robot',
-    emoji: '🔷',
+    emoji: '💎',
     moveDistance: 1,
     canMoveDiagonally: true,
     energyLimit: null,

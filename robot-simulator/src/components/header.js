@@ -53,9 +53,6 @@ const Header = () => {
           <Image src="/bellroy.png" alt="Bellroy" width={100} height={40} />
         </Link>
         <nav style={{ display: 'flex', alignItems: 'center' }}>
-          <Link href="/about" style={linkStyle}>
-            About Me
-          </Link>
           <button onClick={toggleDarkMode} style={toggleStyle}>
             <span style={{ fontSize: '16px' }}>
               {isDarkMode ? '☀️' : '🌙'}
@@ -64,6 +61,9 @@ const Header = () => {
               {isDarkMode ? 'Light' : 'Dark'}
             </span>
           </button>
+          <Link href="/about" style={linkStyle}>
+            About Me
+          </Link>
         </nav>
       </div>
     </header>
