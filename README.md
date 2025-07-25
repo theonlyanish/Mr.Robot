@@ -1,6 +1,6 @@
 # Robot Control Simulator
 
-A sophisticated web-based robot simulation game that demonstrates concepts of robot movement, control, and navigation in a 2D grid environment. This interactive application showcases advanced frontend development skills using Next.js and React.
+A simple web-based robot simulation game that demonstrates concepts of robot movement, control, and navigation in a 2D grid environment. This interactive application showcases advanced frontend development skills using Next.js and React.
 
 
 ## Project Overview
