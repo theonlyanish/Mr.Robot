@@ -2,7 +2,6 @@
 
 A sophisticated web-based robot simulation game that demonstrates concepts of robot movement, control, and navigation in a 2D grid environment. This interactive application showcases advanced frontend development skills using Next.js and React.
 
-![Robot Simulator](robot-simulator/public/robot.svg)
 
 ## Project Overview
 
@@ -80,8 +79,7 @@ The Robot Simulator is an interactive web application that combines entertainmen
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd bellroy-assessment
+   git clone https://github.com/theonlyanish/Mr.Robot.git
    ```
 
 2. **Navigate to the robot simulator**
